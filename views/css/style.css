@@ -1,5 +1,5 @@
 /*Importing Google Fonts From The API For The Pacifico Font we are using in the brand logo*/
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Titillium+Web:ital,wght@1,300&display=swap");
 
 html {
   position: relative;
@@ -47,10 +47,13 @@ th {
 }
 th,
 .category-row {
-  font-weight: bold;
   background-color: #3ebbb5;
+  font-family: "Titillium Web", sans-serif;
   color: #f7f7f7;
 }
 .category-row {
   text-align: center;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
