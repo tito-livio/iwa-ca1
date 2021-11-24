@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <carsList>
-    <carType name="sedan">
+    <carType name="Sedan">
         <car>
             <name>Honda City</name>
             <price>100,000</price>
@@ -17,7 +17,7 @@
             <fuelType>Diesel</fuelType>
         </car>
     </carType>
-    <carType name="suv">
+    <carType name="SUV">
         <car isEco="true">
             <name>Honda Wezel</name>
             <price>145,000</price>
@@ -34,7 +34,7 @@
             <fuelType>Hybrid</fuelType>
         </car>
     </carType>
-    <carType name="sports">
+    <carType name="Sports">
         <car isEco="true">
             <name>Aston Martin</name>
             <price>845,000</price>

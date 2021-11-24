@@ -2,7 +2,7 @@
 <xsl:stylesheet
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:template match="/">
-        <table id="inventoryTable" class="mt-2" border="1" class="indent">
+        <table id="inventoryTable" class="mt-2 mb-2" border="1" class="indent">
             <thead>
                 <tr align="left">
                     <th style="width: 5%">Select</th>
@@ -14,7 +14,7 @@
             <tbody>
                 <xsl:for-each select="/carsList/carType">
                     <tr>
-                        <td colspan="4">
+                        <td colspan="4" class="category-row">
                             <xsl:value-of select="@name" />
                         </td>
                     </tr>
