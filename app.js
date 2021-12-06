@@ -38,4 +38,5 @@ app.get("/inventory/table", function (req, res) {
   res.status(200).contentType(".html").send(result.toString());
 });
 
+
 module.exports = app;

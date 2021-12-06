@@ -57,3 +57,11 @@ th,
   font-size: 18px;
   font-weight: bold;
 }
+.selected {
+  background-color: #3aafa9;
+  color: #f7f7f7;
+}
+.hovered {
+  background-color: #1c8d87a2;
+  color: #f7f7f7;
+}
