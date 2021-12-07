@@ -32,7 +32,7 @@
                             <td>
                                 <xsl:value-of select="fuelType" />
                             </td>
-                            <td algin="right">
+                            <td id="price" algin="right">
                                 <xsl:value-of select="price" />
                             </td>
                         </tr>

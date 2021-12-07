@@ -1,3 +1,7 @@
+//Variables
+let selectedCars = 0;
+let totalAmount = 0;
+
 //Function To Render The Inventory Table in the HTML
 function render_inventory_table() {
   //Setting the parent div to empty to remove any old tables/unesscary data
@@ -52,12 +56,28 @@ function SelectRow() {
         //If the checked value is true then add selected class otherwise remove it
         if (event.target.checked === true) {
           rows[i].classList.add("selected");
+          totalAmount += parseInt(rows[i].querySelector("#price").textContent);
+          selectedCars++;
+          updateTotalAndQty(totalAmount, selectedCars);
         } else {
+          totalAmount -= parseInt(rows[i].querySelector("#price").textContent);
+          selectedCars--;
+          updateTotalAndQty(totalAmount, selectedCars);
           rows[i].classList.remove("selected");
         }
         //Once click add the selected class
       });
   }
+}
+
+//Utility Function
+
+//Function for updating Total Amount in the Input Field
+//and the number of quantity of selected cars
+
+function updateTotalAndQty(total, qty) {
+  document.getElementById("selectedCars").textContent = qty;
+  document.getElementById("totalAmount").value = total;
 }
 
 //When our document loads execute the following function
