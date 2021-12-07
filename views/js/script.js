@@ -56,16 +56,21 @@ function SelectRow() {
         //If the checked value is true then add selected class otherwise remove it
         if (event.target.checked === true) {
           rows[i].classList.add("selected");
+          //Retriving Total Value and adding with selected car row's total value
           totalAmount += parseInt(rows[i].querySelector("#price").textContent);
+          //Incrementing Quantity of the selected cars
           selectedCars++;
+          //Calling our utility function to update the values in the DOM
           updateTotalAndQty(totalAmount, selectedCars);
         } else {
+          //Retriving Total Value and subracting with unselected car row's total value
           totalAmount -= parseInt(rows[i].querySelector("#price").textContent);
+          //Decrementing Quantity of the selected cars
           selectedCars--;
+          //Calling our utility function to update the values in the DOM
           updateTotalAndQty(totalAmount, selectedCars);
           rows[i].classList.remove("selected");
         }
-        //Once click add the selected class
       });
   }
 }
