@@ -61,14 +61,14 @@ function SelectRow() {
           //Incrementing Quantity of the selected cars
           selectedCars++;
           //Calling our utility function to update the values in the DOM
-          updateTotalAndQty(totalAmount, selectedCars);
+          updateTotalAndQty();
         } else {
           //Retriving Total Value and subracting with unselected car row's total value
           totalAmount -= parseInt(rows[i].querySelector("#price").textContent);
           //Decrementing Quantity of the selected cars
           selectedCars--;
           //Calling our utility function to update the values in the DOM
-          updateTotalAndQty(totalAmount, selectedCars);
+          updateTotalAndQty();
           rows[i].classList.remove("selected");
         }
       });
@@ -80,9 +80,9 @@ function SelectRow() {
 //Function for updating Total Amount in the Input Field
 //and the number of quantity of selected cars
 
-function updateTotalAndQty(total, qty) {
-  document.getElementById("selectedCars").textContent = qty;
-  document.getElementById("totalAmount").value = total;
+function updateTotalAndQty() {
+  document.getElementById("selectedCars").textContent = selectedCars;
+  document.getElementById("totalAmount").value = totalAmount;
 }
 
 //When our document loads execute the following function
