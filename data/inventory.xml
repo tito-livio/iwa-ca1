@@ -3,51 +3,51 @@
     <carType name="Sedan">
         <car>
             <name>Honda City</name>
-            <price>100,000</price>
+            <price>100</price>
             <fuelType>Diesel</fuelType>
         </car>
         <car isEco="true">
             <name>Tesla Model S</name>
-            <price>400,000</price>
+            <price>400</price>
             <fuelType>Electric</fuelType>
         </car>
         <car>
             <name>Volkswagen Vento</name>
-            <price>400,000</price>
+            <price>400</price>
             <fuelType>Diesel</fuelType>
         </car>
     </carType>
     <carType name="SUV">
         <car isEco="true">
             <name>Honda Wezel</name>
-            <price>145,000</price>
+            <price>145</price>
             <fuelType>Hybrid</fuelType>
         </car>
         <car>
             <name>Toyota Fortuner</name>
-            <price>650,000</price>
+            <price>650</price>
             <fuelType>Diesel</fuelType>
         </car>
         <car isEco="true">
             <name>BMW X3</name>
-            <price>443,000</price>
+            <price>443</price>
             <fuelType>Hybrid</fuelType>
         </car>
     </carType>
     <carType name="Sports">
         <car isEco="true">
             <name>Aston Martin</name>
-            <price>845,000</price>
+            <price>845</price>
             <fuelType>Diesel</fuelType>
         </car>
         <car>
             <name>Alpine A110</name>
-            <price>950,000</price>
+            <price>950</price>
             <fuelType>Diesel</fuelType>
         </car>
         <car>
             <name>Porsche 911</name>
-            <price>803,000</price>
+            <price>803</price>
             <fuelType>Diesel</fuelType>
         </car>
     </carType>
