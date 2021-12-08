@@ -1,6 +1,7 @@
 //Variables
 let selectedCars = 0;
 let totalAmount = 0;
+let tax = 2.5;
 
 //Function To Render The Inventory Table in the HTML
 function render_inventory_table() {
@@ -61,28 +62,64 @@ function SelectRow() {
           //Incrementing Quantity of the selected cars
           selectedCars++;
           //Calling our utility function to update the values in the DOM
-          updateTotalAndQty(totalAmount, selectedCars);
+          updateTotalAndQty();
         } else {
           //Retriving Total Value and subracting with unselected car row's total value
           totalAmount -= parseInt(rows[i].querySelector("#price").textContent);
           //Decrementing Quantity of the selected cars
           selectedCars--;
           //Calling our utility function to update the values in the DOM
-          updateTotalAndQty(totalAmount, selectedCars);
+          updateTotalAndQty();
           rows[i].classList.remove("selected");
         }
       });
   }
 }
 
+//Highlight element
+let highlightCheckbox = document.getElementById("highlightECO");
+//Adding change for value listener on the highlight checkbox
+highlightCheckbox.addEventListener("change", function (event) {
+  let rows = document.querySelectorAll("#inventoryTable tbody tr[id]");
+  //If the checkbox is selected
+  if (event.target.checked === true) {
+    for (let i = 0; i < rows.length; i++) {
+      //if the rows have correct attribute value
+      if (rows[i].getAttribute("iseco") == "true") {
+        //Add Eco highlight class
+        rows[i].classList.add("eco-highligt");
+      }
+    }
+  }
+  //If the checkbox is not selected
+  else {
+    for (let i = 0; i < rows.length; i++) {
+      //if the rows have correct attribute value
+      if (rows[i].getAttribute("iseco") == "true") {
+        //Remove Eco highlight class
+        rows[i].classList.remove("eco-highligt");
+      }
+    }
+  }
+});
+
+let billButton = document.getElementById("calcBill");
+billButton.addEventListener("click", function () {
+  document.getElementById("total-cars").textContent = selectedCars;
+  document.getElementById("cost-price").textContent = totalAmount;
+  document.getElementById("vat").textContent = tax;
+  document.getElementById("amount-payable").textContent =
+    totalAmount + totalAmount / tax;
+});
+
 //Utility Function
 
 //Function for updating Total Amount in the Input Field
 //and the number of quantity of selected cars
 
-function updateTotalAndQty(total, qty) {
-  document.getElementById("selectedCars").textContent = qty;
-  document.getElementById("totalAmount").value = total;
+function updateTotalAndQty() {
+  document.getElementById("selectedCars").textContent = selectedCars;
+  document.getElementById("totalAmount").value = totalAmount;
 }
 
 //When our document loads execute the following function

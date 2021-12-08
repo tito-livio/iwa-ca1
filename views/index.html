@@ -55,14 +55,14 @@
             <p class="h5">Highlight Cars</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="mb-4">
-                <input
-                  type="checkbox"
-                  name="highlightDiesel"
-                  id="highlightDiesel"
-                />
+                <input type="checkbox" name="highlightECO" id="highlightECO" />
                 <span class="text-success">Eco Friendly</span>
               </div>
             </div>
+            <p class="text">
+              You have selected
+              <strong> <span id="selectedCars">0</span></strong> cars
+            </p>
             <p class="h5">Total Amount</p>
             <div class="input-group">
               <div class="input-group-prepend">
@@ -75,17 +75,59 @@
                 name="txtBillAmt"
                 id="totalAmount"
               />
-              <p class="text">
-                You have selected
-                <strong> <span id="selectedCars">0</span></strong> cars
-              </p>
+
               <input
                 class="btn btn-block btn-secondary mt-2"
                 type="button"
                 name="btnCalcBill"
                 value="Calculate Bill"
                 id="calcBill"
+                data-toggle="modal"
+                data-target="#exampleModal"
               />
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog bg-light" role="document">
+                  <div class="modal-dialog" role="document">
+                    <div class="model-header">
+                      <h3 class="text-center pt-2">Invoice</h3>
+                    </div>
+                    <div class="modal-body" id="bill">
+                      <p>
+                        <strong>Total Cars: </strong>
+                        <span id="total-cars">0</span>
+                      </p>
+                      <p>
+                        <strong>Cost Price: </strong>
+                        <span id="cost-price">0</span>
+                      </p>
+                      <p>
+                        <strong>VAT: </strong>
+                        <span id="vat">0</span>%
+                      </p>
+                      <p>
+                        <strong>Amount Payable: </strong>
+                        <span id="amount-payable">0</span>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </form>
         </div>
@@ -102,8 +144,24 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script1.js"></script>
+    <script></script>
   </body>
 </html>
