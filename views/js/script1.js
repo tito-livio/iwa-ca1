@@ -1,6 +1,7 @@
 //Variables
 let selectedCars = 0;
 let totalAmount = 0;
+let tax = 2.5;
 
 //Function To Render The Inventory Table in the HTML
 function render_inventory_table() {
@@ -77,21 +78,38 @@ function SelectRow() {
 
 //Highlight element
 let highlightCheckbox = document.getElementById("highlightECO");
+//Adding change for value listener on the highlight checkbox
 highlightCheckbox.addEventListener("change", function (event) {
   let rows = document.querySelectorAll("#inventoryTable tbody tr[id]");
+  //If the checkbox is selected
   if (event.target.checked === true) {
     for (let i = 0; i < rows.length; i++) {
+      //if the rows have correct attribute value
       if (rows[i].getAttribute("iseco") == "true") {
+        //Add Eco highlight class
         rows[i].classList.add("eco-highligt");
       }
     }
-  } else {
+  }
+  //If the checkbox is not selected
+  else {
     for (let i = 0; i < rows.length; i++) {
+      //if the rows have correct attribute value
       if (rows[i].getAttribute("iseco") == "true") {
+        //Remove Eco highlight class
         rows[i].classList.remove("eco-highligt");
       }
     }
   }
+});
+
+let billButton = document.getElementById("calcBill");
+billButton.addEventListener("click", function () {
+  document.getElementById("total-cars").textContent = selectedCars;
+  document.getElementById("cost-price").textContent = totalAmount;
+  document.getElementById("vat").textContent = tax;
+  document.getElementById("amount-payable").textContent =
+    totalAmount + totalAmount / tax;
 });
 
 //Utility Function
