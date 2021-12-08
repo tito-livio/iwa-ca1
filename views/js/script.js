@@ -75,6 +75,25 @@ function SelectRow() {
   }
 }
 
+//Highlight element
+let highlightCheckbox = document.getElementById("highlightECO");
+highlightCheckbox.addEventListener("change", function (event) {
+  let rows = document.querySelectorAll("#inventoryTable tbody tr[id]");
+  if (event.target.checked === true) {
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].getAttribute("iseco") == "true") {
+        rows[i].classList.add("eco-highligt");
+      }
+    }
+  } else {
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].getAttribute("iseco") == "true") {
+        rows[i].classList.remove("eco-highligt");
+      }
+    }
+  }
+});
+
 //Utility Function
 
 //Function for updating Total Amount in the Input Field

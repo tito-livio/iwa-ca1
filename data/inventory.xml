@@ -38,7 +38,7 @@
         <car isEco="true">
             <name>Aston Martin</name>
             <price>845</price>
-            <fuelType>Diesel</fuelType>
+            <fuelType>Hybrid</fuelType>
         </car>
         <car>
             <name>Alpine A110</name>
