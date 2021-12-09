@@ -4,6 +4,7 @@ const app = express();
 const fs = require("fs");
 const xmlParse = require("xslt-processor").xmlParse;
 const xsltProcess = require("xslt-processor").xsltProcess;
+xml2js = require("xml2js");
 
 /**
  * -----------USAGE FOR EACH MODULE----------
@@ -13,10 +14,16 @@ const xsltProcess = require("xslt-processor").xsltProcess;
  * fs: Read and Write files that are in the server's file system.
  * xmlParse: Utilize XML file capabilities
  * xsltProcess: Utilize XSL file capabilities (such as transformation)
+ * xml2js: This module does XML to JSON conversion and also allows us to get from JSON back to XML
+
  */
 
 //Defining the directory from where our static data will be served from by express
 app.use(express.static(path.join(__dirname, "views")));
+//We allow the data sent from the client to be coming in as part of the URL in GET and POST requests
+app.use(express.urlencoded({ extended: true }));
+//We include support for JSON that is coming from the client
+app.use(express.json());
 
 //This endpoint which is the root endpoint will be responsible for rendering our homepage from the static content
 app.get("/", function (req, res) {
@@ -38,5 +45,45 @@ app.get("/inventory/table", function (req, res) {
   res.status(200).contentType(".html").send(result.toString());
 });
 
+app.post("/inventory/create", function (req, res) {
+  console.log(req.body);
+  let obj = req.body;
+  xmlFileToJs("./data/inventory.xml", function (err, result) {
+    if (err) throw err;
+    console.log(result.carsList.carType[2]);
+    result.carsList.carType[obj.sec_category].car.push({
+      name: obj.name,
+      price: obj.price,
+      fuelType: obj.fuelType,
+    });
+
+    console.log(JSON.stringify(result, null, "  "));
+
+    jsToXmlFile("./data/inventory.xml", result, function (err) {
+      if (err) console.log(err);
+    });
+  });
+  res.redirect("/crud.html");
+});
+
+//Utility Functions
+
+// Function to read in XML file and convert it to JSON
+function xmlFileToJs(filename, cb) {
+  var filepath = path.normalize(path.join(__dirname, filename));
+  fs.readFile(filepath, "utf8", function (err, xmlStr) {
+    if (err) throw err;
+    xml2js.parseString(xmlStr, {}, cb);
+  });
+}
+
+//Function to convert JSON to XML and save it
+function jsToXmlFile(filename, obj, cb) {
+  var filepath = path.normalize(path.join(__dirname, filename));
+  var builder = new xml2js.Builder();
+  var xml = builder.buildObject(obj);
+  fs.unlinkSync(filepath);
+  fs.writeFile(filepath, xml, cb);
+}
 
 module.exports = app;
