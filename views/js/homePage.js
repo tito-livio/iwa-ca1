@@ -1,7 +1,7 @@
 //Variables
 let selectedCars = 0;
 let totalAmount = 0;
-let tax = 2.5;
+let tax = 25;
 
 //Function To Render The Inventory Table in the HTML
 function render_inventory_table() {
