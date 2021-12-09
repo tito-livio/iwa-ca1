@@ -54,7 +54,11 @@
       <div class="row">
         <!--Form Element-->
         <div class="col-md-4">
-          <form action="">
+          <form
+            enctype="application/json"
+            action="/inventory/create"
+            method="post"
+          >
             <div class="form-group">
               <input
                 class="form-control mt-2"
@@ -63,14 +67,14 @@
                 placeholder="Name"
               />
               <select class="form-control mt-2" name="sec_category">
-                <option value="sedan">Sedan</option>
-                <option value="sports">Sports</option>
-                <option value="suv">Suv</option>
+                <option value="0">Sedan</option>
+                <option value="1">SUV</option>
+                <option value="2">Sports</option>
               </select>
-              <select class="form-control mt-2" name="sec_category">
-                <option value="sedan">Diesel</option>
-                <option value="sports">Hybrid</option>
-                <option value="suv">Electric</option>
+              <select class="form-control mt-2" name="fuelType">
+                <option value="Diesel">Diesel</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Electric">Electric</option>
               </select>
               <input
                 class="form-control mt-2"
@@ -81,9 +85,9 @@
               <button type="submit" class="btn btn-primary btn-block mt-2">
                 Add
               </button>
-              <button class="btn btn-danger btn-block mt-2">Delete</button>
             </div>
           </form>
+          <button class="btn btn-danger btn-block mt-2">Delete</button>
         </div>
         <!--Table Element-->
         <div class="col-md-8 mb-2" id="table"></div>
