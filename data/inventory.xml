@@ -6,11 +6,6 @@
       <price>100</price>
       <fuelType>Diesel</fuelType>
     </car>
-    <car isEco="true">
-      <name>Tesla Model S</name>
-      <price>400</price>
-      <fuelType>Electric</fuelType>
-    </car>
     <car>
       <name>Volkswagen Vento</name>
       <price>400</price>
@@ -18,30 +13,15 @@
     </car>
     <car>
       <name>Toyota Yaris</name>
-      <price>2323</price>
+      <price>575</price>
       <fuelType>Diesel</fuelType>
     </car>
   </carType>
   <carType name="SUV">
     <car isEco="true">
-      <name>Honda Wezel</name>
-      <price>145</price>
-      <fuelType>Hybrid</fuelType>
-    </car>
-    <car>
-      <name>Toyota Fortuner</name>
-      <price>650</price>
-      <fuelType>Diesel</fuelType>
-    </car>
-    <car isEco="true">
       <name>BMW X3</name>
       <price>443</price>
       <fuelType>Hybrid</fuelType>
-    </car>
-    <car>
-      <name>Toyota Parado</name>
-      <price>1232</price>
-      <fuelType>Diesel</fuelType>
     </car>
   </carType>
   <carType name="Sports">
@@ -53,16 +33,6 @@
     <car>
       <name>Alpine A110</name>
       <price>950</price>
-      <fuelType>Diesel</fuelType>
-    </car>
-    <car>
-      <name>Porsche 911</name>
-      <price>803</price>
-      <fuelType>Diesel</fuelType>
-    </car>
-    <car>
-      <name>Mazda RX8</name>
-      <price>23232</price>
       <fuelType>Diesel</fuelType>
     </car>
   </carType>

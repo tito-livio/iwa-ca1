@@ -46,7 +46,6 @@ app.get("/inventory/table", function (req, res) {
 });
 
 app.post("/inventory/create", function (req, res) {
-  console.log(req.body);
   let obj = req.body;
   xmlFileToJs("./data/inventory.xml", function (err, result) {
     if (err) throw err;
@@ -57,7 +56,8 @@ app.post("/inventory/create", function (req, res) {
       fuelType: obj.fuelType,
     });
 
-    console.log(JSON.stringify(result, null, "  "));
+    //Debug Code
+    // console.log(JSON.stringify(result, null, "  "));
 
     jsToXmlFile("./data/inventory.xml", result, function (err) {
       if (err) console.log(err);
@@ -66,6 +66,24 @@ app.post("/inventory/create", function (req, res) {
   res.redirect("/crud.html");
 });
 
+app.post("/inventory/delete", function (req, res) {
+  let obj = req.body;
+  console.log(obj);
+  xmlFileToJs("./data/inventory.xml", function (err, result) {
+    if (err) throw err;
+
+    delete result.carsList.carType[obj.carType].car[obj.car];
+
+    //Debug Code
+    // console.log(JSON.stringify(result, null, "  "));
+
+    jsToXmlFile("./data/inventory.xml", result, function (err) {
+      if (err) console.log(err);
+    });
+  });
+
+  res.redirect("/crud.html");
+});
 //Utility Functions
 
 // Function to read in XML file and convert it to JSON
