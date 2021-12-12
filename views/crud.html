@@ -65,13 +65,18 @@
                 type="text"
                 name="name"
                 placeholder="Name"
+                id="name"
               />
-              <select class="form-control mt-2" name="sec_category">
+              <select
+                class="form-control mt-2"
+                name="sec_category"
+                id="sec_category"
+              >
                 <option value="0">Sedan</option>
                 <option value="1">SUV</option>
                 <option value="2">Sports</option>
               </select>
-              <select class="form-control mt-2" name="fuelType">
+              <select class="form-control mt-2" name="fuelType" id="fuelType">
                 <option value="Diesel">Diesel</option>
                 <option value="Hybrid">Hybrid</option>
                 <option value="Electric">Electric</option>
@@ -81,13 +86,16 @@
                 type="text"
                 name="price"
                 placeholder="Price"
+                id="price"
               />
               <button type="submit" class="btn btn-primary btn-block mt-2">
                 Add
               </button>
             </div>
           </form>
-          <button class="btn btn-danger btn-block mt-2">Delete</button>
+          <button id="delete" class="btn btn-danger btn-block mt-2">
+            Delete
+          </button>
         </div>
         <!--Table Element-->
         <div class="col-md-8 mb-2" id="table"></div>

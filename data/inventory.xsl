@@ -23,13 +23,13 @@
                             <xsl:attribute name="isEco">
                                 <xsl:value-of select="boolean(@isEco)" />
                             </xsl:attribute>
-                            <td align="center">
+                            <td id="carSelect" align="center">
                                 <input name="selectCar" type="checkbox"  />
                             </td>
-                            <td>
+                            <td id="name">
                                 <xsl:value-of select="name" />
                             </td>
-                            <td>
+                            <td id="fuelType">
                                 <xsl:value-of select="fuelType" />
                             </td>
                             <td id="price" algin="right">
