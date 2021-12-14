@@ -4,7 +4,8 @@ const app = express();
 const fs = require("fs");
 const xmlParse = require("xslt-processor").xmlParse;
 const xsltProcess = require("xslt-processor").xsltProcess;
-xml2js = require("xml2js");
+const xml2js = require("xml2js");
+const { body, validationResult } = require("express-validator");
 
 /**
  * -----------USAGE FOR EACH MODULE----------
@@ -45,46 +46,73 @@ app.get("/inventory/table", function (req, res) {
   res.status(200).contentType(".html").send(result.toString());
 });
 
-app.post("/inventory/create", function (req, res) {
-  let obj = req.body;
-  console.log(obj);
-  xmlFileToJs("./data/inventory.xml", function (err, result) {
-    if (err) throw err;
-    console.log(result.carsList.carType[2]);
-    result.carsList.carType[obj.sec_category].car.push({
-      name: obj.name,
-      price: obj.price,
-      fuelType: obj.fuelType,
+//Endpoint for creating a record of a car in the file
+app.post(
+  "/inventory/create",
+  [
+    body("name").isLength({ min: 5 }).trim().escape(),
+    body("price").isNumeric(),
+    body("fuelType").isLength({ min: 3 }).trim().escape(),
+    body("sec_category").isLength({ min: 3 }).trim().escape(),
+  ],
+  function (req, res) {
+    let name = req.body.name;
+    let price = req.body.price;
+    let fuelType = req.body.fuelType;
+    let sec_category = req.body.sec_category;
+    console.log(req.body);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    xmlFileToJs("./data/inventory.xml", function (err, result) {
+      if (err) throw err;
+      console.log(result.carsList.carType[2]);
+      result.carsList.carType[sec_category].car.push({
+        name: name,
+        price: price,
+        fuelType: fuelType,
+      });
+
+      //Debug Code
+      // console.log(JSON.stringify(result, null, "  "));
+
+      jsToXmlFile("./data/inventory.xml", result, function (err) {
+        if (err) console.log(err);
+      });
+    });
+    res.redirect("/crud.html");
+  }
+);
+
+//Endpoint for deleting a specific record of a car in the file
+app.post(
+  "/inventory/delete",
+  [body("car").isNumeric(), body("carType").isNumeric()],
+  function (req, res) {
+    let obj = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    console.log(obj);
+
+    xmlFileToJs("./data/inventory.xml", function (err, result) {
+      if (err) throw err;
+
+      delete result.carsList.carType[obj.carType].car[obj.car];
+
+      //Debug Code
+      // console.log(JSON.stringify(result, null, "  "));
+
+      jsToXmlFile("./data/inventory.xml", result, function (err) {
+        if (err) console.log(err);
+      });
     });
 
-    //Debug Code
-    // console.log(JSON.stringify(result, null, "  "));
-
-    jsToXmlFile("./data/inventory.xml", result, function (err) {
-      if (err) console.log(err);
-    });
-  });
-  res.redirect("/crud.html");
-});
-
-app.post("/inventory/delete", function (req, res) {
-  let obj = req.body;
-  console.log(obj);
-  xmlFileToJs("./data/inventory.xml", function (err, result) {
-    if (err) throw err;
-
-    delete result.carsList.carType[obj.carType].car[obj.car];
-
-    //Debug Code
-    // console.log(JSON.stringify(result, null, "  "));
-
-    jsToXmlFile("./data/inventory.xml", result, function (err) {
-      if (err) console.log(err);
-    });
-  });
-
-  res.redirect("/crud.html");
-});
+    res.redirect("/crud.html");
+  }
+);
 //Utility Functions
 
 // Function to read in XML file and convert it to JSON
