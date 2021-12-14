@@ -1,7 +1,7 @@
 //Variables
 let selectedCars = 0;
 let totalAmount = 0;
-let tax = 25;
+let tax = 23;
 
 //Function To Render The Inventory Table in the HTML
 function render_inventory_table() {
@@ -109,7 +109,7 @@ billButton.addEventListener("click", function () {
   document.getElementById("cost-price").textContent = totalAmount;
   document.getElementById("vat").textContent = tax;
   document.getElementById("amount-payable").textContent =
-    totalAmount + totalAmount / tax;
+    totalAmount + totalAmount * (tax / 100);
 });
 
 //Utility Function

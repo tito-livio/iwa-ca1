@@ -47,7 +47,7 @@
       <div class="col-md-12 text-center text-capitalize">
         <h1 class="mt-4">Le Auto's Inventory System</h1>
         <p class="lead">
-          Use the following system to Add, Edit or Delete Cars in our Inventory
+          Use the following system to Add or Delete Cars in our Inventory
         </p>
       </div>
       <!--Form and Table Element Container Row-->
@@ -66,17 +66,25 @@
                 name="name"
                 placeholder="Name"
                 id="name"
+                required
+                id="validationDefault01"
               />
               <select
                 class="form-control mt-2"
                 name="sec_category"
                 id="sec_category"
+                required
               >
                 <option value="0">Sedan</option>
                 <option value="1">SUV</option>
                 <option value="2">Sports</option>
               </select>
-              <select class="form-control mt-2" name="fuelType" id="fuelType">
+              <select
+                class="form-control mt-2"
+                name="fuelType"
+                id="fuelType"
+                required
+              >
                 <option value="Diesel">Diesel</option>
                 <option value="Hybrid">Hybrid</option>
                 <option value="Electric">Electric</option>
@@ -87,6 +95,8 @@
                 name="price"
                 placeholder="Price"
                 id="price"
+                id="validationDefault01"
+                required
               />
               <button type="submit" class="btn btn-primary btn-block mt-2">
                 Add
@@ -105,11 +115,26 @@
     <!--Footer Element-->
     <footer class="footer">
       <div class="container text-center">
-        <span class="text-light">&copy; 2020 Le Auto</span>
+        <span class="text-light">&copy; 2021 Le Auto</span>
       </div>
     </footer>
 
     <!-- Bootstrap core JavaScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/crudPage.js"></script>

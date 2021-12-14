@@ -70,17 +70,26 @@ function SelectRow() {
 }
 function deleteRow() {
   $("#delete").click(function () {
-    $.ajax({
-      url: "/inventory/delete",
-      type: "POST",
-      data: {
-        carType: carType,
-        car: carRow,
-      },
-      cache: false,
-      success: setTimeout(render_inventory_table, 1000),
-    });
-    resetInputField();
+    if (
+      document.getElementById("name").value != "" &&
+      document.getElementById("price").value != "" &&
+      document.getElementById("fuelType").value != "" &&
+      document.getElementById("sec_category").value != ""
+    ) {
+      $.ajax({
+        url: "/inventory/delete",
+        type: "POST",
+        data: {
+          carType: carType,
+          car: carRow,
+        },
+        cache: false,
+        success: setTimeout(render_inventory_table, 1000),
+      });
+      resetInputField();
+    } else {
+      alert("Please Select any row!");
+    }
   });
 }
 //Utility Function

@@ -47,6 +47,7 @@ app.get("/inventory/table", function (req, res) {
 
 app.post("/inventory/create", function (req, res) {
   let obj = req.body;
+  console.log(obj);
   xmlFileToJs("./data/inventory.xml", function (err, result) {
     if (err) throw err;
     console.log(result.carsList.carType[2]);
