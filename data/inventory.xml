@@ -23,6 +23,11 @@
       <price>443</price>
       <fuelType>Hybrid</fuelType>
     </car>
+    <car>
+      <name>Toyota Parado</name>
+      <price>1200</price>
+      <fuelType>Diesel</fuelType>
+    </car>
   </carType>
   <carType name="Sports">
     <car isEco="true">

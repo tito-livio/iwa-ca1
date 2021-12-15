@@ -1,7 +1,7 @@
 //Variables
 let selectedCars = 0;
 let totalAmount = 0;
-let tax = 25;
+let tax = 23;
 
 //Function To Render The Inventory Table in the HTML
 function render_inventory_table() {
@@ -104,12 +104,17 @@ highlightCheckbox.addEventListener("change", function (event) {
 });
 
 let billButton = document.getElementById("calcBill");
+//Adding Event listner of calculate bill button
 billButton.addEventListener("click", function () {
+  //Getting Numbers of Cars Selected
   document.getElementById("total-cars").textContent = selectedCars;
+  //Getting Numbers of Total Amount
   document.getElementById("cost-price").textContent = totalAmount;
+  //Getting VAT
   document.getElementById("vat").textContent = tax;
+  //Calculating Amount Payable and then setting it
   document.getElementById("amount-payable").textContent =
-    totalAmount + totalAmount / tax;
+    totalAmount + totalAmount * (tax / 100);
 });
 
 //Utility Function
