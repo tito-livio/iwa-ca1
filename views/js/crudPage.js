@@ -42,7 +42,7 @@ function SelectRow() {
           }
           //Getting Values of the row
           let name = rows[i].querySelector("#name").textContent;
-          let price = rows[i].querySelector("#price").textContent;
+          let price = rows[i].querySelector("#price").textContent;  
           let fuelType = rows[i].querySelector("#fuelType").textContent;
           let category =
             $(rows[i]).prevAll("tr").children("td[colspan='4']").length - 1;
@@ -70,12 +70,14 @@ function SelectRow() {
 }
 function deleteRow() {
   $("#delete").click(function () {
+    //Basic Input Validaiton
     if (
       document.getElementById("name").value != "" &&
       document.getElementById("price").value != "" &&
       document.getElementById("fuelType").value != "" &&
       document.getElementById("sec_category").value != ""
     ) {
+      //API Call
       $.ajax({
         url: "/inventory/delete",
         type: "POST",
@@ -88,6 +90,7 @@ function deleteRow() {
       });
       resetInputField();
     } else {
+      //Handling Error
       alert("Please Select any row!");
     }
   });
