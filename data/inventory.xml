@@ -28,6 +28,11 @@
       <price>1200</price>
       <fuelType>Diesel</fuelType>
     </car>
+    <car isEco="true">
+      <name>Honda Wezel</name>
+      <price>679</price>
+      <fuelType>Hybrid</fuelType>
+    </car>
   </carType>
   <carType name="Sports">
     <car isEco="true">

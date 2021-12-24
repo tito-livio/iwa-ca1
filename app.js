@@ -82,7 +82,7 @@ app.post(
     body("name").isLength({ min: 5 }).trim().escape(),
     body("price").isNumeric(),
     body("fuelType").isLength({ min: 3 }).trim().escape(),
-    body("sec_category").isLength({ min: 3 }).trim().escape(),
+    body("sec_category").isLength({ min: 1 }).trim().escape(),
   ],
   //Handling the request
   function (req, res) {
